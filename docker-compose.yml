@@ -1,0 +1,41 @@
+#----------------------------------------------------------------
+# https://docs.docker.com/compose/
+#
+# ビルド    : docker-compose build
+# 起動      : docker-compose up
+# 停止      : docker-compose down
+# アタッチ  : docker-compose exec -it <ID/Name> bash
+#----------------------------------------------------------------
+version: "3.9" # optional sinece v1.27.0
+services:
+
+  tf2:
+    # image: python # Use image or build
+    build:
+      context: ./tf2
+      dockerfile: Dockerfile
+    entrypoint: jupyter-lab --no-browser --port=8888 --ip=0.0.0.0 --allow-root --NotebookApp.token='' --notebook-dir=/workspace
+    expose:
+      - "8888"
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./tf2_storage/root_jupyter:/root/.jupyter # JupyterLabの設定を永続化させるためのマッピング
+      - ./workspace:/workspace # workspaceのマッピング
+    environment:
+      - "MKL_DEBUG_CPU_TYPE=5"
+      # - "NVIDIA_VISIBLE_DEVICES=all"
+      # - "NVIDIA_DRIVER_CAPABILITIES=all"
+
+    shm_size: 1gb
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities:
+              - gpu
+
