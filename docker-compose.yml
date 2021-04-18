@@ -20,7 +20,7 @@ services:
     ports:
       - "8888:8888"
     volumes:
-      - ./tf2_storage/root_jupyter:/root/.jupyter # JupyterLabの設定を永続化させるためのマッピング
+      - ./tf2/storage/root_jupyter:/root/.jupyter # JupyterLabの設定を永続化させるためのマッピング
       - ./workspace:/workspace # workspaceのマッピング
     environment:
       - "MKL_DEBUG_CPU_TYPE=5"
