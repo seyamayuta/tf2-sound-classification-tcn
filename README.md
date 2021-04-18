@@ -2,4 +2,4 @@
 TCN(Temporal Convolutional Network)を使って音を分類するサンプル
 
 ## 全体の概要図（workspace配下）
-![Outline](https://user-images.githubusercontent.com/8535627/115136189-29dfd300-a059-11eb-9478-a2b16ccca5c6.png)
+![outline](https://user-images.githubusercontent.com/8535627/115148218-8fec4a80-a099-11eb-8c09-1f81b4832d57.png)
