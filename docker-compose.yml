@@ -4,7 +4,7 @@
 # ビルド    : docker-compose build
 # 起動      : docker-compose up
 # 停止      : docker-compose down
-# アタッチ  : docker-compose exec -it <ID/Name> bash
+# アタッチ  : docker-compose exec <service-name> bash
 #----------------------------------------------------------------
 version: "3.9" # optional sinece v1.27.0
 services:
